@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import SingleApi from './SingleApi';
 import Button from './Button';
+import Modal from './Modal';
+
 
 
 const Card = () => {
@@ -33,10 +35,17 @@ const Card = () => {
             }
             
         </div>
-        <div onClick={SeeMoreButton} className='text-center'>
-            <Button>See More</Button>
+        <div>
+        {!showAll &&(
+            <span onClick={SeeMoreButton} className='text-center'>
+            <Button>See More</Button></span>
+        )}
+
+        <Modal></Modal>
             </div>
+            
         </div>
+        
     );
 };
 
