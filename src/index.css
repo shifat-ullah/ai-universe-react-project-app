@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.penentCard{
+    margin: 20px;
+    
+    padding: 30px;
+    
+}
+.btnn{
+    color: rgb(231, 25, 25);
+    background-color: aliceblue;
+}
