@@ -9,7 +9,18 @@ import Modal from './Modal';
 
 const Card = () => {
     const [data, setData]=useState([])
+    const [singleData, setsingleData]=useState({})
     const [showAll, setshowAll]=useState(false)
+    const [UniqeId, setUniqeId] = useState(null)
+    
+    
+
+    useEffect(()=>{
+        console.log('sifat')
+        fetch(`https://openapi.programming-hero.com/api/ai/tool/${UniqeId}`)
+        .then(res => res.json())
+        .then(data => setsingleData(data.data))
+    },[UniqeId])
 
     const SeeMoreButton =()=>{
         setshowAll(true)
@@ -30,7 +41,7 @@ const Card = () => {
             {
                 data.slice(0, showAll ? 12 : 6).map(singleApi => {
                                       
-                    return <SingleApi singleApi={singleApi}></SingleApi>
+                    return <SingleApi singleApi={singleApi} key={singleApi.id} setUniqeId={setUniqeId}></SingleApi>
                 })
             }
             
@@ -41,7 +52,7 @@ const Card = () => {
             <Button>See More</Button></span>
         )}
 
-        <Modal></Modal>
+        <Modal singleData={singleData}></Modal>
             </div>
             
         </div>
